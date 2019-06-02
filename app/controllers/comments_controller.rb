@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   http_basic_authenticate_with name: "nan", password: "secret", except: [:create]
 
   def create
-    @comment  = @article.comments.create(comment_params)
+    @comment  = @article.create_comment(comment_params)
     redirect_to article_path(@article)
   end
 
@@ -21,4 +21,5 @@ class CommentsController < ApplicationController
   def article_id
     @article  = Article.find(params[:article_id])
   end
+
 end
